@@ -1,0 +1,39 @@
+{
+  "availableLanguages": [
+    {
+      "code": "en",
+      "name": "English",
+      "title": "Site in english"
+    }
+  ],
+  "title": "Neuhaus.co",
+  "description": "More than 18 years of experience with digital products just a click away from you.",
+  "keywords": "web, mobile, development, martech, marketing, technology, adrian, neuhaus.co, neuhaus",
+  "author": "Adrian Neuhaus",
+  "og:title": "Web+Mobile Dev & Martech",
+  "og:description": "More than 18 years of experience with digital products just a click away from you.",
+  "og:image": "https://neuhaus.co/assets/img/og-image.png",
+  "og:url": "https://neuhaus.co",
+  "og:site_name": "Neuhaus.co",
+  "og:type": "website",
+  "twitter:card": "summary_large_image",
+  "twitter:summary": "More than 18 years of experience with digital products just a click away from you.",
+  "twitter:site": "@aneuhaus",
+  "msapplication-TileColor": "#da532c",
+  "theme-color": "#ffffff",
+  "brand:name": "neuhaus.co",
+  "brand:description": "Web+Mobile Dev & Martech",
+  "copyrights:disclaimer": "Given that you do not impersonate our company, you can do whatever you what with ideas you find here.",
+  "contact:cta": "Book a meeting",
+  "contact:title": "Let's talk! I can help you grow your business.",
+  "contact:link": "https://calendly.com/neuhausco/30min-en",
+  "linkedin:href": "https://www.linkedin.com/in/aneuhaus/",
+  "linkedin:label": "LinkedIn",
+  "linkedin:title": "Get to know Adrian",
+  "love:label": "Floripa, BR",
+  "love:made": "made in",
+  "love:with": "with",
+  "love:emoji": "love",
+  "love:link": "https://www.google.com/search?q=floripa+br",
+  "love:title": "Come and pay us a visit. This city is awesome!"
+}

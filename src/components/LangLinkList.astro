@@ -1,0 +1,26 @@
+---
+import LangLink from "./LangLink.astro";
+import type { Language } from "../dictionaries/index/_data";
+export interface Props {
+  languages: Language[] | undefined;
+  currentLanguage: string;
+}
+const { languages, currentLanguage } = Astro.props;
+---
+
+<ul>
+  {
+    languages
+      ?.filter((lang: Language) => lang.code !== currentLanguage)
+      .map((lang: Language, idx: number) => (
+        <li>
+          <LangLink
+            body={lang.code.toUpperCase()}
+            href={"/" + lang.code}
+            title={lang.title}
+            tabIdx={idx + 3}
+          />
+        </li>
+      ))
+  }
+</ul>

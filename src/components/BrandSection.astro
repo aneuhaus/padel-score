@@ -1,0 +1,31 @@
+---
+const { name, description, title } = Astro.props;
+---
+
+<section title={title}>
+  <h1>{name}</h1>
+  <div><p>{description}</p></div>
+</section>
+
+<style lang="scss">
+  section {
+    cursor: default;
+    text-shadow: 1px 1px 2px black;
+
+    h1 {
+      font-family: "Lexend", sans-serif;
+      font-size: 3rem;
+      flex-grow: 1;
+      color: var(--fore);
+      margin-bottom: 1rem;
+    }
+
+    div p {
+      font-family: "Inter";
+      font-size: 1rem;
+      color: var(--fore);
+      flex-grow: 1;
+    }
+    
+  }
+</style>

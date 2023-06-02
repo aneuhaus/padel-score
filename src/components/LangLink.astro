@@ -1,0 +1,11 @@
+---
+export interface Props {
+  title: string;
+  body: string;
+  href: string;
+  tabIdx: number;
+}
+
+const { href, title, body, tabIdx } = Astro.props;
+---
+<a tabindex={tabIdx} title={title} href={href}>{body}</a>

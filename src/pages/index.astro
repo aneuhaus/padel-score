@@ -1,0 +1,63 @@
+---
+import Home from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import Scoreboard, {Double, Player} from "../components/Scoreboard.astro";
+
+const lang = "en";
+
+import data from "../dictionaries/index/_data.js";
+
+const content = { 
+  ...data["base"]
+};
+
+const double1: Double = {
+  left:{
+    name: "Alemandi",
+    code: "Ale",
+  },
+  right:{
+    name: "Bergamini",
+    code: "Ber",
+  }
+}
+
+
+const double2: Double = {
+  left:{
+    name: "Campagnolo",
+    code: "Cam",
+  },
+  right:{
+    name: "Di Nenno",
+    code: "DiN",
+  }
+}
+
+const players = [double1, double2];
+
+
+---
+
+<Home lang={lang}>
+  <main class="centered">
+    <h1>{content["title"]}</h1>
+    <p>{content["description"]}</p>
+
+    <Scoreboard
+      players={players}
+    />
+
+    <Footer
+      disclamer={content["copyrights:disclaimer"]}
+      linkedin={content["linkedin:title"]}
+      linkedinLink="https://www.linkedin.com/in/aneuhaus/"
+      _label={content["love:label"]}
+      _made={content["love:made"]}
+      _with={content["love:with"]}
+      _emoji={content["love:emoji"]}
+      _link={content["love:link"]}
+      _title={content["love:title"]}
+    />
+  </main>
+</Home>

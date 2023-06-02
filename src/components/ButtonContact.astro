@@ -1,0 +1,39 @@
+---
+import "@fontsource/lexend";
+
+const { text } = Astro.props;
+---
+
+<button>{text}</button>
+<style lang='scss'>
+  button {
+    background-color: hsla(269,40%,15%,1);
+    border: outset;
+    border-radius: 60px;
+    border-color: hsla(230,80%,14%,0.3);
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    font-weight: 670;
+    line-height: 24px;
+    overflow: hidden;
+    padding: 12px 24px;
+    position: relative;
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+    text-decoration: none;
+    color: var(--fore);
+    -webkit-font-smoothing: initial;
+    -moz-osx-font-smoothing: initial;
+  
+
+  &:hover {
+    background-color: hsla(269,60%,25%,1)
+  }
+
+  &:active {
+    background-color: hsla(269,40%,15%,1);
+  }
+}
+</style>

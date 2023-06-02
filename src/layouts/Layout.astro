@@ -1,0 +1,59 @@
+---
+export interface Props {
+  lang: 'es' | 'pt' | 'en';
+}
+
+import '@fontsource/lexend';
+import '@fontsource/inter';
+import data from '../dictionaries/index/_data.js';
+import './Layout.scss'
+
+const {lang} = Astro.props;
+const content = {...data['base'] }
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>{content.title}</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png" />
+    <link rel="manifest" href={`/assets/configs/site-${lang}.webmanifest`} />
+    <link rel="mask-icon" href="/assets/img/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="description" content={content.description}>
+    <meta name="keywords" content={content.keywords}>
+    <meta name="author" content={content.author}>
+    <meta name="robots" content="index, follow">
+    <meta name="og:title" content={content['og:title']}>
+    <meta name="og:description" content={content.description}>
+    <meta name="og:image" content={content['og:image']}>
+    <meta name="og:url" content={content['og:url']}>
+    <meta name="og:site_name" content={content['og:site_name']}>
+    <meta name="og:type" content={content['og:type']}>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@aneuhaus">
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff"></meta>
+  </head>
+  <body>
+    <slot />
+  </body>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZWZTR3QT7E"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZWZTR3QT7E');
+  </script>
+  <!-- // -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded' , ()=> {
+      document.querySelector('.full-year').innerHTML = new Date().getFullYear()
+      document.querySelector('main').classList.add('loaded')
+    })
+  </script>
+</html>

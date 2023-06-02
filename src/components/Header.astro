@@ -1,0 +1,12 @@
+---
+import LangLinkList from './LangLinkList.astro'
+const { languages, currentLanguage } = Astro.props
+---
+<header>
+  <nav>
+    <LangLinkList
+      languages={languages}
+      currentLanguage={currentLanguage}
+    />
+  </nav>
+</header>

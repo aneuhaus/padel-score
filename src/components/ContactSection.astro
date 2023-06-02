@@ -1,0 +1,18 @@
+---
+import ButtonContact from "../components/ButtonContact.astro";
+
+const { title, cta, link } = Astro.props;
+---
+<section class="contact">
+  <a tabindex="1" title={title} href={link}>
+    <ButtonContact text={cta}/>
+  </a>
+</section>
+
+<style>
+
+section.contact {
+  margin-top: 3rem;
+}
+
+</style>
