@@ -6,8 +6,8 @@
       "title": "Site in english"
     }
   ],
-  "title": "Neuhaus.co",
-  "description": "More than 18 years of experience with digital products just a click away from you.",
+  "title": "Padel Scoreboard",
+  "description": "A simple scoreboard using React.js microfrontend and Astro.js as builder.",
   "keywords": "web, mobile, development, martech, marketing, technology, adrian, neuhaus.co, neuhaus",
   "author": "Adrian Neuhaus",
   "og:title": "Web+Mobile Dev & Martech",
