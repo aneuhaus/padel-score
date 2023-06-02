@@ -6,7 +6,7 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   allowImportingTsExtensions: true,
-  site: 'https://dripster.rocks/padel-scoreboard/',
+  site: 'https://padel.bohr.io',
   compressHTML: true,
   experimental: {
     assets: true

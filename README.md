@@ -3,6 +3,7 @@
 ## About
 
 This is a simple scoreboard for padel matches. It is built with [Astro](https://astro.build) and [Bohr](https://bohr.io).
+Check the demo at [https://padel.bohr.app](https://padel.bohr.app).
 
 ## 🚀 Project Structure
 

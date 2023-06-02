@@ -1,5 +1,5 @@
 {
-  "name": "padel-scoreboard",
+  "name": "padel-score",
   "type": "module",
   "version": "0.0.1",
   "author": "Adrian Neuhaus <adrian@neuhaus.co> (https://github.com/aneuhaus)",
@@ -11,12 +11,12 @@
     "i18n",
     "bohr-io"
   ],
-  "repository": "https://github.com/aneuhaus/padel-scoreboard",
+  "repository": "https://github.com/aneuhaus/padel-score",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aneuhaus/padel-scoreboard/issues"
+    "url": "https://github.com/aneuhaus/padel-score/issues"
   },
-  "homepage": "https://github.com/aneuhaus/padel-scoreboard#readme",
+  "homepage": "https://github.com/aneuhaus/padel-score#readme",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
