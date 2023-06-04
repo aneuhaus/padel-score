@@ -2,28 +2,38 @@
 const {
   disclamer,
   linkedin,
+  linkedinLabel,
   linkedinLink,
   _label,
   _made,
   _with,
   _emoji,
   _link,
-  _title
+  _title,
 } = Astro.props;
 ---
+
 <footer>
   <p class="copy" title={disclamer}>
     <span class="mirror">©</span>
-    <span><span class="full-year"></span> neuhaus.co</span>
+    <span><span class="full-year"></span> dripster.rocks</span>
   </p>
   <p class="linkedin">
     <a
+      style={{
+        textDecoration: "none",
+        fontSize: "2.5rem",
+        lineHeight: "1rem",
+        verticalAlign: "middle",
+      }}
       tabindex="2"
       title={linkedin}
-      href={linkedinLink}>LinkedIn</a
+      href={linkedinLink}>{linkedinLabel} <span style={{fontSize: "1rem", verticalAlign: "middle",}}>Cheers!</span></a
     >
   </p>
   <p class="aknow">
-    {_made}&nbsp;<a title={_title} href={_link}>{_label}</a>&nbsp;{_with}&nbsp;<span class="emoji" title={_emoji}>❤️</span>
+    {_made}&nbsp;<a title={_title} href={_link}>{_label}</a>&nbsp;{
+      _with
+    }&nbsp;<span class="emoji" title={_emoji}>❤️</span>
   </p>
 </footer>

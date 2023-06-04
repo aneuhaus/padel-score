@@ -64,7 +64,8 @@ body {
 main {
   display: flex;
   align-items: center;
-  opacity: 0.00000001;
+  align-self: baseline;
+  opacity: 0;
 }
 
 main.loaded {

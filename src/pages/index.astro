@@ -1,40 +1,18 @@
 ---
+
 import Home from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
-import Scoreboard, {Double, Player} from "../components/Scoreboard.astro";
-
-const lang = "en";
+import ScoreboardTestBed from "../components/ScoreboardTestBed";
 
 import data from "../dictionaries/index/_data.js";
 
-const content = { 
-  ...data["base"]
+import '../styles/Scoreboard.scss'
+
+const lang = "en";
+
+const content = {
+  ...data["base"],
 };
-
-const double1: Double = {
-  left:{
-    name: "Alemandi",
-    code: "Ale",
-  },
-  right:{
-    name: "Bergamini",
-    code: "Ber",
-  }
-}
-
-
-const double2: Double = {
-  left:{
-    name: "Campagnolo",
-    code: "Cam",
-  },
-  right:{
-    name: "Di Nenno",
-    code: "DiN",
-  }
-}
-
-const players = [double1, double2];
 
 
 ---
@@ -44,13 +22,12 @@ const players = [double1, double2];
     <h1>{content["title"]}</h1>
     <p>{content["description"]}</p>
 
-    <Scoreboard
-      players={players}
-    />
+    <ScoreboardTestBed client:only/>
 
     <Footer
       disclamer={content["copyrights:disclaimer"]}
       linkedin={content["linkedin:title"]}
+      linkedinLabel={content["linkedin:label"]}
       linkedinLink="https://www.linkedin.com/in/aneuhaus/"
       _label={content["love:label"]}
       _made={content["love:made"]}

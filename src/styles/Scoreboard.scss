@@ -1,0 +1,142 @@
+.scoreboard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-rendering: geometricPrecision;
+  &.scaled{
+    scale: 2;
+    transform-origin: top center;
+    margin-bottom: 2rem;
+  }
+  --line-width: 0.12rem;
+  .board {
+    display: flex;
+    border: var(--line-width) solid #ccc;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    position: relative;
+    line-height: 2rem;
+    font-weight: bolder;
+    background-color: hsl(196 89% 19% / 1);
+    width: fit-content;
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: calc(100% + var(--line-width));
+      left: 0;
+      top: 50%;
+      background-color: #ccc;
+      height: var(--line-width);
+
+    }
+    
+    .players {
+      border-right: var(--line-width) solid #ccc;
+      padding-left: 0.5rem;
+      padding-right: 0.6rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    .double {
+      display: flex;
+      width: 6rem;
+      justify-content: space-evenly;
+      .player {
+        display: inline-block;
+        text-transform: uppercase;
+        position: relative;
+        &.serving {
+          &:before {
+            content: attr(data-marker);
+            position: absolute;
+            width: max-content;
+            right: -0.8rem;
+            top: -0.05rem;
+            color: yellow;
+          }
+          &:first-of-type {
+            &:before {
+              left: -0.7rem;
+            }
+          }
+        }
+      }
+    }
+    .score {
+      display: flex;
+      align-items: center;
+      width: 1.8rem;
+      justify-content: space-evenly;
+      border-right: var(--line-width) solid #ccc;
+    }
+    .game {
+      .score {
+        background-color: white;
+        padding: 0 .5em;
+        border-right: 0;
+        font-weight: bold;
+        color: #000;
+        &:first-child {
+          position: relative;
+          z-index: 1;
+        }
+      }
+      &.golden {
+        .score {
+          background-color: hsl(60, 100%, 50%);
+        }
+      }
+    }
+  }
+}
+
+.mode{
+  .badge{
+    background-color: white;
+    padding: .1rem .4rem;
+    display: inline-block;
+    border-radius: 0.5rem;
+    font-size: .6rem;
+    text-transform: uppercase;
+    color: #000;
+    min-height: fit-content;
+    &:not(:first-child){
+      margin-left: .5rem; 
+    }
+  }
+}
+.controls {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  fieldset {
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    select{
+      font-size: 1rem;
+    }
+    span{
+      display: inline-block;
+      min-width: 1rem;
+    }
+  }
+  button {
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover {
+      background-color: #ccc;
+    }
+  }
+}
