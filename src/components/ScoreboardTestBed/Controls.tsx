@@ -31,9 +31,10 @@ export default function Controls(props: {
             name="first-service"
             id="first-service"
             onChange={handleFirst}
+            defaultValue={firstService}
           >
             {players.map((player: Player, i: number) => (
-              <option value={i} selected={firstService === i}>
+              <option key={i} value={i}>
                 {player.name}
               </option>
             ))}
@@ -43,13 +44,13 @@ export default function Controls(props: {
             name="second-service"
             id="second-service"
             onChange={handleSecond}
+            defaultValue={secondService}
           >
             {players.map((player: Player, i: number) => (
               <option
+                key={i}
                 value={i}
-                selected={secondService === i}
                 disabled={
-                  firstService === i ||
                   ([0, 1].includes(i) && [0, 1].includes(firstService)) ||
                   ([2, 3].includes(i) && [2, 3].includes(firstService))
                 }
@@ -64,17 +65,15 @@ export default function Controls(props: {
           <label htmlFor="">
             {doubles.map((double, i) => {
               return (
-                <>
-                  {i > 0 && <span></span>}
-                  <button
-                    onClick={handlePoint}
-                    key={i}
-                    className={`double${i + 1}`}
-                  >
-                    {double.left.code.toUpperCase()} /{" "}
-                    {double.right.code.toUpperCase()}
-                  </button>
-                </>
+                <button
+                  key={i}
+                  onClick={handlePoint}
+                  className={`double${i + 1}`}
+                  style={{ marginLeft: i > 0 ? "1rem" : "0" }}
+                >
+                  {double.left.code.toUpperCase()} /{" "}
+                  {double.right.code.toUpperCase()}
+                </button>
               );
             })}
           </label>

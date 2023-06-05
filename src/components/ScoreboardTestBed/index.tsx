@@ -2,7 +2,7 @@ import { Double, GameScore, SetScore, Service } from "../Scoreboard/types";
 import Scoreboard from "../Scoreboard";
 import Controls from "./Controls";
 
-import { useState, MouseEventHandler, ChangeEventHandler } from "react";
+import { useState, MouseEventHandler, ChangeEventHandler, useEffect } from "react";
 
 
 const double1: Double = {
@@ -97,7 +97,6 @@ export default function TestBed() {
     const { currentTarget: target } = event;
     setSecondService(+target.value as Service);
   }
-
 
   return (
     <>

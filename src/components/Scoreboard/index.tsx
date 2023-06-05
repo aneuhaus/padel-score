@@ -40,22 +40,32 @@ export default function Scoreboard(props: {
     sets[sets.length - 1][0] === 6 && sets[sets.length - 1][1] === 6;
   const forth: number = +(finishedGames % 4);
   const order = playerOrder(firstService, secondService);
-  console.log("order", order);
-  const serving = !tiebreak
-    ? order[forth]
-    : finishedGames < 1
-    ? order[forth]
-    : order[1 | forth % 2];
+
+  let serving = firstService
+  if(!tiebreak) serving = order[forth];
+  else {
+    const currentGame = games[games.length - 1];
+    const tieGames = currentGame[0] + currentGame[1];
+    switch(tieGames) {
+      case 0:
+        serving = order[0];
+        break;
+      case 1:
+        serving = order[1];
+        break;
+      default:
+        serving = order[((tieGames-1) % 4)];
+    }
+  };
   console.log("serving", serving);
-  // console.log("forth", forth);
   return (
-    <div className="scoreboard">
-      <div className="board">
+    <div className={`scoreboard`}>
+      <div className={`board ${games.length>1?'hasGames':''}`}>
         <PlayersBlock doubles={doubles} serving={serving} marker={"●"} />
         <SetsBlock sets={sets} />
         <GamesBlock games={games} tiebreak={tiebreak} />
       </div>
-      <ModeBlock games={games} sets={sets} tiebreak={tiebreak} />
+      <ModeBlock games={games} sets={sets} tiebreak={tiebreak} firstService={firstService} secondService={secondService} />
     </div>
   );
 }

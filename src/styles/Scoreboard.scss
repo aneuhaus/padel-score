@@ -1,63 +1,106 @@
 .scoreboard {
+
   position: relative;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   text-rendering: geometricPrecision;
-  &.scaled{
+  justify-content: space-evenly;
+  padding: 0.3rem;
+  color: white;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  &.scaled {
     scale: 2;
     transform-origin: top center;
     margin-bottom: 2rem;
   }
-  --line-width: 0.12rem;
+  --line-width: 1px;
+  --bg-color-board: rgb(23,0,65);
+  --fg-color: rgb(238, 241, 41);
   .board {
     display: flex;
-    border: var(--line-width) solid #ccc;
+    border: 1px solid var(--fg-color);
     overflow: hidden;
     border-radius: 0.5rem;
     position: relative;
-    line-height: 2rem;
+    // line-height: 2rem;
     font-weight: bolder;
-    background-color: hsl(196 89% 19% / 1);
+    background-color: var(--bg-color-board);
     width: fit-content;
+
+    // & div + div + div {
+    //   border: var(--line-width) solid transparent;
+    // }
 
     &:before {
       content: "";
       display: block;
       position: absolute;
-      width: calc(100% + var(--line-width));
+      width: calc(
+        calc(100% + var(--line-width)) - (1.8rem)
+      );
       left: 0;
-      top: 50%;
-      background-color: #ccc;
+      top: calc(50% - var(--line-width) / 2);
+      background-color: white;
       height: var(--line-width);
-
+      z-index: 99;
     }
-    
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: calc(1.8rem + var(--line-width));
+      left: calc(calc(100% + var(--line-width)) - (1.8rem + var(--line-width)));
+      top: calc(50% - var(--line-width) / 2);
+      background-color: var(--bg-color-board);
+      height: var(--line-width);
+      z-index: 999;
+    }
+
+    &:not(.hasGames){
+      &:before {
+        width: calc(
+          calc(100% + var(--line-width))
+        );
+      }
+      &:after {
+        display: none;
+      }
+    }
+
     .players {
-      border-right: var(--line-width) solid #ccc;
       padding-left: 0.5rem;
       padding-right: 0.6rem;
-
       display: flex;
+      height: 100%;
       flex-direction: column;
       justify-content: space-around;
     }
     .double {
       display: flex;
       width: 6rem;
+      height: fit-content;
+      color: white;
       justify-content: space-evenly;
+      padding: 0.2rem 0;
+      padding-bottom: 0.1rem;
+      &:not(:first-child) {
+        vertical-align: -2px;
+      }
       .player {
         display: inline-block;
         text-transform: uppercase;
         position: relative;
         &.serving {
+          color: var(--fg-color);
           &:before {
             content: attr(data-marker);
             position: absolute;
             width: max-content;
             right: -0.8rem;
             top: -0.05rem;
-            color: yellow;
+            color: var(--fg-color);
           }
           &:first-of-type {
             &:before {
@@ -71,16 +114,24 @@
       display: flex;
       align-items: center;
       width: 1.8rem;
-      justify-content: space-evenly;
-      border-right: var(--line-width) solid #ccc;
+      justify-content: center;
+      border-left: var(--line-width) solid white;
+      padding: 0.2rem 0;
+      padding-bottom: 0.1rem;
+    }
+    .sets {
+      height: 100%;
+      .set {
+        height: 50%;
+      }
     }
     .game {
+      height: 50%;
+      background-color: white;
       .score {
-        background-color: white;
-        padding: 0 .5em;
         border-right: 0;
         font-weight: bold;
-        color: #000;
+        color: var(--bg-color-board);
         &:first-child {
           position: relative;
           z-index: 1;
@@ -88,25 +139,66 @@
       }
       &.golden {
         .score {
-          background-color: hsl(60, 100%, 50%);
+          background-color: var(--fg-color);
+          // background-color: hsl(60, 100%, 50%);
         }
       }
     }
   }
 }
 
-.mode{
-  .badge{
+.mode {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.3rem;
+  padding-left: 0.3rem;
+  min-height: 50px;
+  .badge {
     background-color: white;
-    padding: .1rem .4rem;
-    display: inline-block;
-    border-radius: 0.5rem;
-    font-size: .6rem;
+    opacity: 0;
+    padding: .03rem .4rem .1rem;
+    max-width: fit-content;
+    height: fit-content;
+    font-weight: bolder;
+    display: block;
+    position: absolute;
+    align-items: center;
+    border-radius: 0.4rem;
+    font-size: 0.6rem;
     text-transform: uppercase;
-    color: #000;
+    color: #ffffff;
+    width: 1.1rem;
+    // never break line or words
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
     min-height: fit-content;
-    &:not(:first-child){
-      margin-left: .5rem; 
+
+    transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
+
+    // &:not(:first-child){
+    //   // margin-top: .3rem;
+    // }
+    &.golden {
+      background-color: var(--fg-color);
+      // margin-bottom: 0.15rem;
+    }
+    &.show {
+      width: 100%;
+      color: #000;
+      position: relative;
+      display: inline-block;
+      opacity: 1;
+    }
+    &.tiebreak {
+      --navy-blue: hsl(196 89% 19% / 1);
+      background-color: var(--bg-color-board);
+      color: var(--bg-color-board);
+      &.show {
+        background-color: var(--bg-color-board);
+        color: white;
+      }
     }
   }
 }
@@ -118,10 +210,10 @@
     border: 0;
     display: flex;
     flex-direction: column;
-    select{
+    select {
       font-size: 1rem;
     }
-    span{
+    span {
       display: inline-block;
       min-width: 1rem;
     }

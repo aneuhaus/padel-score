@@ -1,6 +1,4 @@
 import { Double } from "./types";
-import { CSSProperties } from "react";
-
 export default function PlayersBlock(props: {
   doubles: Double[];
   serving: number;
@@ -9,10 +7,10 @@ export default function PlayersBlock(props: {
   const { doubles, serving, marker } = props;
   let playerCounter = 0;
   return (
-      <div className="players">
+      <div className={`players`}>
         {doubles.map((double: Double, index: number) => {
           return (
-            <div className="double" key={index}>
+            <div className={`double`} key={index}>
               <div
                 className={
                   "player" + (serving === index * 2 ? " serving" : "")

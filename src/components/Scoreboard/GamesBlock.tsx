@@ -12,12 +12,11 @@ export default function GamesBlock(props: {
     ? (point: number) => [0, 15, 30, 40, "game"][point]
     : (point: number) => point;
 
+  if(currentGame[0] == 0 && currentGame[1] == 0 && games.length<=1) return null;
   return (
-    <div className="games">
-      <div className={"game" + (isGoldenPoint && !tiebreak ? " golden" : "")}>
-        <div className="score">{pointsMap(currentGame[0])}</div>
-        <div className="score">{pointsMap(currentGame[1])}</div>
-      </div>
+    <div className={"game" + (isGoldenPoint && !tiebreak ? " golden" : "")}>
+      <div className="score">{pointsMap(currentGame[0])}</div>
+      <div className="score">{pointsMap(currentGame[1])}</div>
     </div>
   );
 }
